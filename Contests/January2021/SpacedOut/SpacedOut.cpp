@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 using namespace std;
 
@@ -7,35 +6,42 @@ int main()
 {
     int n;
     cin >> n;
-    int beauty[1000][1000];
+    int grid[1000][1000];
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            cin >> beauty[i][j];
+            cin >> grid[i][j];
         }
     }
-    vector<int> sum;
-    int altcols = 0, altrows = 0;
+
+    int rows_alternate = 0, cols_alternate = 0;
+    // each row has an alternating pattern of cow and no cow
     for (int i = 0; i < n; i++)
     {
-        sum.assign(2, 0);
+        int sum[2]{};
+        // there are two ways to alternate, odd index and even index
         for (int j = 0; j < n; j++)
         {
-            sum[j % 2] += beauty[i][j];
+            sum[j % 2] += grid[i][j];
         }
-        altcols += max(sum[0], sum[1]);
+        // add the best way to the answer for alternating rows
+        rows_alternate += max(sum[0], sum[1]);
     }
+
+    // each column has an alternating pattern of cow and no cow
     for (int i = 0; i < n; i++)
     {
-       sum.assign(2, 0);
+       int sum[2]{};
+        // two ways to alternate
        for (int j = 0; j < n; j++)
        {
-           sum[j % 2] += beauty[j][i];
+           sum[j % 2] += grid[j][i];
        }
-       altrows += max(sum[0], sum[1]);
+       // add the best way to the answer for alternating columns
+       cols_alternate += max(sum[0], sum[1]);
     }
     
-    cout << max(altcols, altrows) << endl;
+    cout << max(rows_alternate, cols_alternate) << endl;
     return 0;
 }
