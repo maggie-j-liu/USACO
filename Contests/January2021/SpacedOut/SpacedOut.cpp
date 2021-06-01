@@ -33,7 +33,7 @@ int main()
     for (int i = 0; i < n; i++)
     {
        int sum[2]{};
-        // two ways to alternate
+       // two ways to alternate
        for (int j = 0; j < n; j++)
        {
            sum[j % 2] += grid[j][i];
