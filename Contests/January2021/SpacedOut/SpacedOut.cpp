@@ -32,14 +32,14 @@ int main()
     // each column has an alternating pattern of cow and no cow
     for (int i = 0; i < n; i++)
     {
-       int sum[2]{};
-       // two ways to alternate
-       for (int j = 0; j < n; j++)
-       {
-           sum[j % 2] += grid[j][i];
-       }
-       // add the best way to the answer for alternating columns
-       cols_alternate += max(sum[0], sum[1]);
+        int sum[2]{};
+        // two ways to alternate
+        for (int j = 0; j < n; j++)
+        {
+            sum[j % 2] += grid[j][i];
+        }
+        // add the best way to the answer for alternating columns
+        cols_alternate += max(sum[0], sum[1]);
     }
     
     cout << max(rows_alternate, cols_alternate) << endl;
