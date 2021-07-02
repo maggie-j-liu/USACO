@@ -41,7 +41,7 @@ int main()
         // add the best way to the answer for alternating columns
         cols_alternate += max(sum[0], sum[1]);
     }
-    
+
     cout << max(rows_alternate, cols_alternate) << endl;
     return 0;
 }
